@@ -1,0 +1,58 @@
+{
+  "name": "Super DevContainer Completo",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+
+  "settings": {
+    "editor.formatOnSave": true,
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-azuretools.vscode-docker",
+    "mhutchie.git-graph",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.makefile-tools"
+  ],
+
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+
+  "postCreateCommand": "npm install || true",
+
+  "forwardPorts": [
+    3000,
+    8080,
+    5432,
+    6379
+  ],
+
+  "remoteUser": "vscode",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.trimTrailingWhitespace": true,
+        "git.confirmSync": false
+      }
+    }
+  }
+}
